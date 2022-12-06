@@ -22,5 +22,6 @@ public class Spielbank {
 		hunderter = tastatur.nextInt();
         euro = fuenfer * 5 + zehner * 10 + zwanziger * 20 + fuenfziger * 50 + hunderter * 100;
         System.out.println("\nSie erhalten "+euro+"€.\n");
+		tastatur.close();
 	}
 }

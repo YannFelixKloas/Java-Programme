@@ -17,5 +17,6 @@ public class Zinsen {
             euro = euro * (1 + (0.01 * zinssatz));
         }
         System.out.print("Auszahlung: "+euro+"€.");
+		tastatur.close();
     }
 }

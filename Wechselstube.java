@@ -37,5 +37,6 @@ public class Wechselstube {
         System.out.println(zweicents + " 2-Cent-Münzen,");
         cent = cent %  2;
         System.out.println(cent + " 1-Cent-Münzen.");
+		tastatur.close();
 	}
 }

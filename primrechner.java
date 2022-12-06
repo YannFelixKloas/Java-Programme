@@ -1,4 +1,4 @@
-public class main {
+public class primrechner {
 
 	public static void main(String[] args) {
 		int x = 1;

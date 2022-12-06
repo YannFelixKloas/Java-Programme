@@ -16,5 +16,6 @@ public class Rechteck {
 		System.out.println("Umfang in cm: "+umfang);
         flaeche = a * b;
 		System.out.println("Fläche in cm^2: "+flaeche);       
+		tastatur.close();
     }
 }
