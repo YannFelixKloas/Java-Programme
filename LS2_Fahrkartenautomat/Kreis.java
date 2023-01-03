@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Kreis {
     public static void main(String []args) {
        
