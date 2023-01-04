@@ -21,5 +21,6 @@ public class Rabattsystem {
 
         bestellwert = bestellwert * (1.0-rabatt);
         System.out.println("Ausgabe: " + bestellwert);
+		eingabe.close();
     }
 }

@@ -12,10 +12,10 @@ public class GroessterWert {
       b = Tastatur.nextInt();
       System.out.print("c: ");
       c = Tastatur.nextInt();
-     
+
       // Verarbeitung
-      if ( )  {
-          if ( ) {
+      if (a >= b)  {
+          if (a >= c) {
              max = a;
           }
           else {
@@ -23,7 +23,7 @@ public class GroessterWert {
          }
       }
       else {
-          if ( ) {
+          if (b >= c) {
             max = b;
           }
          else {
@@ -31,5 +31,6 @@ public class GroessterWert {
          }
       }
      System.out.println("Der größte eingegebene Wert ist: " + max);
+     Tastatur.close();
    }
 }
