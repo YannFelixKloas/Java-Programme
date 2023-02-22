@@ -6,27 +6,55 @@ class Fahrkartenautomat {
         Scanner tastatur = new Scanner(System.in);
 
         double ticketpreis;
+        int tickettyp;
         int ticketanzahl;
-        double zuZahlenderBetrag;
+        double zuZahlenderBetrag = 0;
         double eingezahlterGesamtbetrag;
         double €;
         double rueckgabebetrag;
         double nochZuZahlen;
+        boolean auswahlAbgeschlossen = false;
 
-        // Geldbetrag eingeben
-        System.out.print("Ticketpreis (Euro): ");
-        ticketpreis = tastatur.nextDouble();
-        if (ticketpreis < 0) {
-            System.out.println ("Fehler! Ihre Eingabe darf nicht negativ sein. Es wird ein Standardpreis von 1€ angenommen.");
-            ticketpreis = 1.0;
+        begruessung();
+        // Art und Menge der Tickets wählen
+        while (!auswahlAbgeschlossen) {
+            while (true) {
+                System.out.print(
+                        "Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:\n1 - Kurzstrecke AB      [2,00 EUR]\n2 - Einzelfahrschein AB [3,00 EUR]\n3 - Tageskarte AB       [8,80 EUR]\n4 - 4-Fahrten-Karte AB  [9,40 EUR]\n");
+                tickettyp = tastatur.nextInt();
+                if (tickettyp == 1) {
+                    ticketpreis = 2.00;
+                    break;
+                } else if (tickettyp == 2) {
+                    ticketpreis = 3.00;
+                    break;
+                } else if (tickettyp == 3) {
+                    ticketpreis = 8.80;
+                    break;
+                } else if (tickettyp == 4) {
+                    ticketpreis = 9.40;
+                    break;
+                } else {
+                    System.out.println("Bitte wählen Sie eines der verfügbaren Tickets aus!");
+                    continue;
+                }
+            }
+            while (true) {
+                System.out.print("Anzahl der Tickets: ");
+                ticketanzahl = tastatur.nextInt();
+                if (ticketanzahl >= 1 && ticketanzahl <= 10) {
+                    break;
+                }
+                System.out.println("Fehler! Ihre Eingabe muss zwischen 1 und 10 Tickets liegen.");
+            }
+            zuZahlenderBetrag = zuZahlenderBetrag + (ticketpreis * ticketanzahl);
+
+            System.out.println("Sind sie fertig? (y/n)");
+            char fertig = tastatur.next().charAt(0);
+            if (fertig == 'y') {
+                auswahlAbgeschlossen = true;
+            }
         }
-        System.out.print("Anzahl der Tickets: ");
-        ticketanzahl = tastatur.nextInt();
-        if (ticketanzahl < 1 || ticketanzahl > 10) {
-            System.out.println ("Fehler! Ihre Eingabe muss zwischen 1 und 10 Tickets liegen. Es wird ein Standardmenge von einem Ticket angenommen.");
-        }
-        zuZahlenderBetrag = ticketpreis * ticketanzahl;
-        
 
         // Geldeinwurf
         eingezahlterGesamtbetrag = 0.0;
@@ -36,10 +64,10 @@ class Fahrkartenautomat {
             System.out.printf("Noch zu zahlen: %.2f Euro\n", nochZuZahlen);
             System.out.print("Eingabe (mind. 5 Cent, höchstens 20 Euro): ");
             € = tastatur.nextDouble();
-            if (€ == 0.05 || € == 0.1 || € == 0.2 || € == 0.5 || € == 1.0 || € == 2.0 || € == 5.0 || € == 10.0 || € == 20.0) {
+            if (€ == 0.05 || € == 0.1 || € == 0.2 || € == 0.5 || € == 1.0 || € == 2.0 || € == 5.0 || € == 10.0
+                    || € == 20.0) {
                 eingezahlterGesamtbetrag = eingezahlterGesamtbetrag + €;
-            }
-            else {
+            } else {
                 System.out.println("Kein gültiges Zahlungsmittel!");
             }
         }
@@ -50,8 +78,7 @@ class Fahrkartenautomat {
             System.out.print("=");
             try {
                 Thread.sleep(200);
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -93,5 +120,10 @@ class Fahrkartenautomat {
                 + "Wir wünschen Ihnen eine gute Fahrt.");
 
         tastatur.close();
+    }
+
+    static void begruessung() {
+        System.out.println("\nHerzlich willkommen!\n");
+        return;
     }
 }
