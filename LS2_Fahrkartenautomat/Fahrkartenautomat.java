@@ -63,7 +63,7 @@ class Fahrkartenautomat {
             }
             zuZahlenderBetrag = zuZahlenderBetrag + (ticketpreis * ticketanzahl);
 
-            System.out.println("Sind sie fertig? (y/n)");
+            System.out.println("Sind sie fertig? (y/N)");
             char fertig = tastatur.next().charAt(0);
             if (fertig == 'y') {
                 auswahlAbgeschlossen = true;
