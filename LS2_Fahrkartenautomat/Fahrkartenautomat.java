@@ -24,10 +24,10 @@ class Fahrkartenautomat {
     static double fahrkartenbestellungErfassen(Scanner tastatur){
         
         //Definition  der internen Variablen
-        String[] tarife = {"Kurzstrecke AB", "Einzelfahrschein AB", "Tageskarte AB", "4-Fahrten-Karte AB"};
+        String[] tarife = {"ERROR", "Einzelfahrschein AB", "Einzelfahrschein BC", "Einzelfahrschein ABC", "Kurzstrecke AB", "Tageskarte AB", "Tageskarte BC", "Tageskarte ABC", "4-Fahrten-Karte AB", "4-Fahrten-Karte BC", "4-Fahrten-Karte ABC", "Kleingruppen-Tageskarte AB", "Kleingruppen-Tageskarte BC", "Kleingruppen-Tageskarte ABC"};
         int tickettyp;
         int ticketanzahl;
-        double[] ticketpreise = {2.00, 3.00, 8.80, 9.40};
+        double[] ticketpreise = {-1.00, 3.00, 3.50, 3.80, 2.00, 8.60, 9.20, 10.00, 9.40, 12.60, 13.80, 25.50, 26.00, 26.50};
         double ticketpreis = 0;
         double zuZahlenderBetrag = 0;
         boolean auswahlAbgeschlossen = false;
@@ -36,7 +36,7 @@ class Fahrkartenautomat {
         while (!auswahlAbgeschlossen) {
             while (true) {
                 System.out.println("Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:");
-                for (int i = 0; i < tarife.length; i++){
+                for (int i = 1; i < tarife.length; i++){
                     System.out.println(i + " - " + tarife[i]);
                 }
                 tickettyp = tastatur.nextInt();
