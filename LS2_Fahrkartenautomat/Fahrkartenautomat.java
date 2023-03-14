@@ -24,35 +24,31 @@ class Fahrkartenautomat {
     static double fahrkartenbestellungErfassen(Scanner tastatur){
         
         //Definition  der internen Variablen
+        String[] tarife = {"Kurzstrecke AB", "Einzelfahrschein AB", "Tageskarte AB", "4-Fahrten-Karte AB"};
         int tickettyp;
         int ticketanzahl;
-        double ticketpreis;
+        double[] ticketpreise = {2.00, 3.00, 8.80, 9.40};
+        double ticketpreis = 0;
         double zuZahlenderBetrag = 0;
         boolean auswahlAbgeschlossen = false;
 
         // Art und Menge der Tickets wählen
         while (!auswahlAbgeschlossen) {
             while (true) {
-                System.out.print(
-                        "Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:\n1 - Kurzstrecke AB      [2,00 EUR]\n2 - Einzelfahrschein AB [3,00 EUR]\n3 - Tageskarte AB       [8,80 EUR]\n4 - 4-Fahrten-Karte AB  [9,40 EUR]\n");
+                System.out.println("Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:");
+                for (int i = 0; i < tarife.length; i++){
+                    System.out.println(i + " - " + tarife[i]);
+                }
                 tickettyp = tastatur.nextInt();
-                if (tickettyp == 1) {
-                    ticketpreis = 2.00;
-                    break;
-                } else if (tickettyp == 2) {
-                    ticketpreis = 3.00;
-                    break;
-                } else if (tickettyp == 3) {
-                    ticketpreis = 8.80;
-                    break;
-                } else if (tickettyp == 4) {
-                    ticketpreis = 9.40;
+                if (tickettyp > 0 && tickettyp < ticketpreise.length) {
+                    ticketpreis = ticketpreis + ticketpreise[tickettyp];
                     break;
                 } else {
                     System.out.println("Bitte wählen Sie eines der verfügbaren Tickets aus!");
                     continue;
                 }
             }
+
             while (true) {
                 System.out.print("Anzahl der Tickets: ");
                 ticketanzahl = tastatur.nextInt();
